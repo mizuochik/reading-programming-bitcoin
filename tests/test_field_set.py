@@ -44,3 +44,14 @@ class TestFieldElement:
         self, lhs: FieldElement, rhs: FieldElement, expected: FieldElement
     ) -> None:
         assert lhs - rhs == expected
+
+    @pytest.mark.parametrize(
+        "lhs,rhs,expected",
+        [
+            (FieldElement(3, 13), FieldElement(12, 13), FieldElement(10, 13)),
+        ],
+    )
+    def test_mul(
+        self, lhs: FieldElement, rhs: FieldElement, expected: FieldElement
+    ) -> None:
+        assert lhs * rhs == expected

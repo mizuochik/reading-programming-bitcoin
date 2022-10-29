@@ -32,3 +32,10 @@ class FieldElement:
         if self.prime != other.prime:
             raise TypeError
         return FieldElement((self.num - other.num) % self.prime, self.prime)
+
+    def __mul__(self, other: object) -> FieldElement:
+        if not isinstance(other, FieldElement):
+            raise TypeError
+        if self.prime != other.prime:
+            raise TypeError
+        return FieldElement((self.num * other.num) % self.prime, self.prime)
