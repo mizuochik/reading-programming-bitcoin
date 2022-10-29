@@ -35,4 +35,4 @@ class FieldElement:
         return FieldElement((self.num * other.num) % self.prime, self.prime)
 
     def __pow__(self, other: int) -> FieldElement:
-        ...
+        return FieldElement((self.num**other) % self.prime, self.prime)

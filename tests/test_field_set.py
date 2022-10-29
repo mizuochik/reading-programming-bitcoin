@@ -55,3 +55,12 @@ class TestFieldElement:
         self, lhs: FieldElement, rhs: FieldElement, expected: FieldElement
     ) -> None:
         assert lhs * rhs == expected
+
+    @pytest.mark.parametrize(
+        "lhs,exp,expected",
+        [
+            (FieldElement(3, 13), 3, FieldElement(1, 13)),
+        ],
+    )
+    def test_pow(self, lhs: FieldElement, exp: int, expected: FieldElement) -> None:
+        assert lhs**exp == expected
