@@ -1,3 +1,4 @@
+from cmath import exp
 import pytest
 from field_set import FieldElement
 
@@ -31,3 +32,15 @@ class TestFieldElement:
         self, lhs: FieldElement, rhs: FieldElement, expected: FieldElement
     ) -> None:
         assert lhs + rhs == expected
+
+    @pytest.mark.parametrize(
+        "lhs,rhs,expected",
+        [
+            (FieldElement(11, 19), FieldElement(9, 19), FieldElement(2, 19)),
+            (FieldElement(6, 19), FieldElement(13, 19), FieldElement(12, 19)),
+        ],
+    )
+    def test_sub(
+        self, lhs: FieldElement, rhs: FieldElement, expected: FieldElement
+    ) -> None:
+        assert lhs - rhs == expected
