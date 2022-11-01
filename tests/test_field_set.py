@@ -1,4 +1,3 @@
-from cmath import exp
 import pytest
 from field_set import FieldElement
 
@@ -64,3 +63,14 @@ class TestFieldElement:
     )
     def test_pow(self, lhs: FieldElement, exp: int, expected: FieldElement) -> None:
         assert lhs**exp == expected
+
+    @pytest.mark.parametrize(
+        "lhs,rhs,expected",
+        [
+            (FieldElement(3, 31), FieldElement(24, 31), FieldElement(4, 31)),
+        ],
+    )
+    def test_div(
+        self, lhs: FieldElement, rhs: FieldElement, expected: FieldElement
+    ) -> None:
+        assert lhs / rhs == expected

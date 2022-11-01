@@ -34,5 +34,13 @@ class FieldElement:
             raise TypeError
         return FieldElement((self.num * other.num) % self.prime, self.prime)
 
+    def __truediv__(self, other: FieldElement) -> FieldElement:
+        if self.prime != other.prime:
+            raise TypeError
+        return FieldElement(
+            num=(self.num * pow(other.num, self.prime - 2, self.prime)) % self.prime,
+            prime=self.prime,
+        )
+
     def __pow__(self, other: int) -> FieldElement:
         return FieldElement((self.num**other) % self.prime, self.prime)
